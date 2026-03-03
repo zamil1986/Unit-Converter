@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./bootstrap.min.css" />
+    <title>Unit Converter</title>
+    <style>
+      label {
+        font-size: 30px;
+      }
+      button {
+        width: 100px;
+      }
+      select {
+        width: 10%;
+        height: 10%;
+      }
+    </style>
+  </head>
+  <body class="">
+    <section class="container text-center mt-3">
+      <h1>
+        <strong>Unit Converter </strong>
+      </h1>
+      <h5 class="">Convert units from different measurement</h5>
+    </section>
+    <nav class="navbar navbar-expand-md bg-body-tertiary navbar-light">
+      <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-3">
+            <li class="nav-item">
+              <a href="#" class="nav-link active ">Length</a>
+            </li>
+            <li class="nav-item">
+              <a href="weight.html" class="nav-link">Weight</a>
+            </li>
+            <li class="nav-item">
+              <a href="temp.html" class="nav-link">Temperature</a>
+            </li>
+          </ul>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav"></div>
+      </div>
+    </nav>
+    <section class="container text-center mt-3">
+      <div class="">
+        <label for="inputLength">Enter the Length to convert:</label>
+        <input type="number" id="inputLength" />
+      </div>
+      <div class="mt-1">
+        <label for="input">From: </label>
+        <select name="" id="input">
+          <option value="milimeter">Milimeter</option>
+          <option value="centimeter">Centimeter</option>
+          <option value="meter">Meter</option>
+          <option value="kilometer">Kilometer</option>
+        </select>
+      </div>
+      <div class="mt-1">
+        <label for="output">Convert to: </label>
+        <select name="" id="output">
+          <option value="milimeter">Milimeter</option>
+          <option value="centimeter">Centimeter</option>
+          <option value="meter">Meter</option>
+          <option value="kilometer">Kilometer</option>
+        </select>
+      </div>
+      <div class="mt-4">
+        <button class="btn btn-success" onclick="convert()">Convert</button>
+      </div>
+      <div class="mt-3">
+        <h1>Result: <small id="result"></small></h1>
+      </div>
+    </section>
+    <script>
+      const inputLength = document.getElementById("inputLength");
+      const result = document.getElementById("result");
+
+      function convert() {
+        const input = document.getElementById("input").value;
+        const output = document.getElementById("output").value;
+
+        let value = Number(inputLength.value);
+        let meters;
+
+        switch (input) {
+          case "milimeter":
+            meters = value / 1000;
+            break;
+          case "centimeter":
+            meters = value / 100;
+            break;
+          case "meter":
+            meters = value;
+            break;
+          case "kilometer":
+            meters = value * 1000;
+            break;
+        }
+
+        let finalValue;
+
+        switch (output) {
+          case "milimeter":
+            finalValue = meters * 1000;
+            result.textContent = finalValue + " mm";
+            break;
+          case "centimeter":
+            finalValue = meters * 100;
+            result.textContent = finalValue + " cm";
+            break;
+          case "meter":
+            finalValue = meters;
+            result.textContent = finalValue + " m";
+            break;
+          case "kilometer":
+            finalValue = meters / 1000;
+            result.textContent = finalValue + " km";
+            break;
+        }
+      }
+    </script>
+    <script src="./bootstrap.bundle.min.js"></script>
+  </body>
+</html>
